@@ -1,2 +1,0 @@
-# participaction
-Begin app
