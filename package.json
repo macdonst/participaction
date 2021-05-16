@@ -2,33 +2,15 @@
   "name": "begin-app",
   "version": "0.0.0",
   "description": "Begin basic Hello World! app for Node",
-  "arc": {
-    "app": "hello-world",
-    "http": [
-      {
-        "/": {
-          "method": "any",
-          "src": "."
-        }
-      },
-      {
-        "/api": {
-          "method": "any",
-          "src": "./api"
-        }
-      }
-    ]
-  },
   "scripts": {
-    "start": "cross-env NODE_ENV=testing npx sandbox"
+    "start": "cross-env NODE_ENV=testing npx sandbox",
+    "test": "QUIET=1 tape test/*-test.js | tap-spec"
   },
   "devDependencies": {
-    "@architect/functions": "latest",
-    "@architect/sandbox": "^3.3.6",
-    "@begin/data": "latest",
-    "cross-env": "^7.0.3"
-  },
-  "dependencies": {
-    "twilio": "^3.62.0"
+    "@architect/sandbox": "latest",
+    "cross-env": "^7.0.2",
+    "tap-spec": "^5.0.0",
+    "tape": "^5.0.1",
+    "tiny-json-http": "^7.2.0"
   }
 }
