@@ -1,4 +1,6 @@
 const MessagingResponse = require("twilio").twiml.MessagingResponse;
+const arc = require("@architect/functions");
+const parseBody = arc.http.helpers.bodyParser;
 
 const shouldValidate = process.env.NODE_ENV !== "testing";
 
@@ -28,9 +30,12 @@ exports.handler = async function http(req) {
     }
   }
 
+  let data = parseBody(req);
+  let incommingText = data.Body;
+
   // Create the response
   const twiml = new MessagingResponse();
-  twiml.message("The Robots are coming! Head for the hills!");
+  twiml.message(`I received ${incommingText}`);
 
   return {
     headers: {
