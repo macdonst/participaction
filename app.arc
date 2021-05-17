@@ -11,3 +11,4 @@ get /echo/:word
 get /name
 post /name
 get /api
+post /api
