@@ -7,7 +7,7 @@ const shouldValidate = process.env.NODE_ENV !== "testing";
 exports.handler = async function http(req) {
   // Validate the webhook
   if (shouldValidate) {
-    if (!req.headers["X-Twilio-Signature"]) {
+    if (!req.headers["x-twilio-signature"]) {
       return {
         headers: {
           "content-type": "text/plain",
