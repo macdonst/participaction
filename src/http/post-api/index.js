@@ -13,7 +13,7 @@ exports.handler = async function http(req) {
           "content-type": "text/plain",
         },
         statusCode: 400,
-        body: "No signature header error - X-Twilio-Signature header does not exist, maybe this request is not coming from Twilio.",
+        body: "No signature header error - x-twilio-signature header does not exist, maybe this request is not coming from Twilio.",
       };
     }
     if (!process.env.TWILIO_AUTH_TOKEN) {
@@ -30,15 +30,14 @@ exports.handler = async function http(req) {
     }
   }
 
-  console.log(req.body);
-  let data = parseBody(req);
-  console.log(data);
-  let incommingText = data.Body;
-  console.log(incommingText);
+  // Parse the POST body
+  const data = parseBody(req);
+  // Get what the user texted us
+  const incomingText = data.Body;
 
   // Create the response
   const twiml = new MessagingResponse();
-  twiml.message(`I received ${incommingText}`);
+  twiml.message(`I received ${incomingText}`);
 
   return {
     headers: {
