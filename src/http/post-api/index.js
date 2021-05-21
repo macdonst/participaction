@@ -4,6 +4,12 @@ const parseBody = arc.http.helpers.bodyParser;
 
 const shouldValidate = process.env.NODE_ENV !== "testing";
 
+const clues = {
+  start: {
+    message: `Welcome to the Amazing Socially Distanced Race! Your first clue is "Watts happening where the Aero flies?"`,
+  },
+};
+
 exports.handler = async function http(req) {
   // Validate the webhook
   if (shouldValidate) {
@@ -33,11 +39,17 @@ exports.handler = async function http(req) {
   // Parse the POST body
   const data = parseBody(req);
   // Get what the user texted us
-  const incomingText = data.Body;
+  const incomingText = data.Body.toLowerCase();
 
   // Create the response
   const twiml = new MessagingResponse();
-  twiml.message(`I received ${incomingText}`);
+  if (clues[incomingText]) {
+    twiml.message(clues[incomingText].message);
+  } else {
+    twiml.message(
+      "Double check what you've typed as we don't have a matching clue!"
+    );
+  }
 
   return {
     headers: {
