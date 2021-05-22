@@ -44,13 +44,14 @@ exports.handler = async function http(req) {
 
   // Create the response
   const twiml = new MessagingResponse();
+  const message = twiml.message();
   if (clues[incomingText]) {
-    twiml.message(clues[incomingText].message);
+    message.body(clues[incomingText].message);
     if (clues[incomingText].media) {
       message.media(clues[incomingText].media);
     }
   } else {
-    twiml.message(
+    message.body(
       "Double check what you've typed as we don't have a matching clue!"
     );
   }
