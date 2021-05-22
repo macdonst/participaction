@@ -7,6 +7,7 @@ const shouldValidate = process.env.NODE_ENV !== "testing";
 const clues = {
   start: {
     message: `Welcome to the Amazing Socially Distanced Race! Your first clue is "Watts happening where the Aero flies?"`,
+    media: "https://stars-v27-staging.begin.app/_static/participaction.png",
   },
 };
 
@@ -45,6 +46,9 @@ exports.handler = async function http(req) {
   const twiml = new MessagingResponse();
   if (clues[incomingText]) {
     twiml.message(clues[incomingText].message);
+    if (clues[incomingText].media) {
+      message.media(clues[incomingText].media);
+    }
   } else {
     twiml.message(
       "Double check what you've typed as we don't have a matching clue!"
