@@ -19,9 +19,9 @@ const clues = {
     message: `"Travel down into West's Dale, there you will find the portal to green." Remember to look for the Community Better sign.`,
   },
   4273: {
-    message: `Your choice! Activity #1: 20 jumping jacks or activity #2: dance like no one is watching for 30 seconds. When you are done text 0157 for your next clue`,
+    message: `Your choice! Activity #1: 20 jumping jacks or activity #2: dance like no one is watching for 30 seconds. When you are done text 8974 for your next clue`,
   },
-  0157: {
+  8974: {
     message: `Head to where the swimmers make a "racquet." You know what to do when you see the Community Better sign.`,
   },
   7198: {
