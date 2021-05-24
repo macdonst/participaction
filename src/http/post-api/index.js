@@ -6,9 +6,10 @@ const shouldValidate = process.env.NODE_ENV !== "testing";
 
 const clues = {
   start: {
-    message: `Welcome to the Amazing Socially Distanced Race! Your first clue is "Watts happening where the Aero flies?"`,
+    message: `Welcome to the Amazing Socially Distanced Race! Follow the clues to find each of our 9 stations. Each station will be marked with a Community Better sign like the picture accompanying this text. Text 1234 to get your first clue.`,
     media: "https://stars-v27-staging.begin.app/_static/participaction.png",
   },
+  1234: `Your first clue is "Watts happening where the Aero flies?"`,
 };
 
 exports.handler = async function http(req) {
@@ -40,7 +41,7 @@ exports.handler = async function http(req) {
   // Parse the POST body
   const data = parseBody(req);
   // Get what the user texted us
-  const incomingText = data.Body.toLowerCase();
+  const incomingText = data.Body.toLowerCase().trim();
 
   // Create the response
   const twiml = new MessagingResponse();
