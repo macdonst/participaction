@@ -9,7 +9,9 @@ const clues = {
     message: `Welcome to the Amazing Socially Distanced Race! Follow the clues to find each of our 9 stations. Each station will be marked with a Community Better sign like the picture accompanying this text. Text 1234 to get your first clue.`,
     media: "https://stars-v27-staging.begin.app/_static/participaction.png",
   },
-  1234: `Your first clue is "Watts happening where the Aero flies?"`,
+  1234: {
+    message: `Your first clue is "Watts happening where the Aero flies?"`,
+  },
 };
 
 exports.handler = async function http(req) {
